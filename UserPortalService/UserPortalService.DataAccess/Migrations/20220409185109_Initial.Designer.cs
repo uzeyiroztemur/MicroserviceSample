@@ -12,7 +12,7 @@ using UserPortalService.DataAccess.Concrete.EntityFramework.Context;
 namespace UserPortalService.DataAccess.Migrations
 {
     [DbContext(typeof(UserPortalDbContext))]
-    [Migration("20220330194517_Initial")]
+    [Migration("20220409185109_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

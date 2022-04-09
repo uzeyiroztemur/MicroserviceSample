@@ -14,6 +14,7 @@ using UserPortalService.Business.Utilities.Security.Jwt;
 using UserPortalService.DataAccess.Abstract;
 using UserPortalService.DataAccess.Concrete.EntityFramework;
 using UserPortalService.DataAccess.Concrete.EntityFramework.Context;
+using UserPortalService.RestApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -65,6 +66,7 @@ builder.Services.AddDbContext<UserPortalDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DatabaseConnection"));
 });
 
+builder.Services.AddGrpc();
 
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
@@ -113,6 +115,7 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
+    endpoints.MapGrpcService<UserService>();
 });
 
 app.MapControllers();

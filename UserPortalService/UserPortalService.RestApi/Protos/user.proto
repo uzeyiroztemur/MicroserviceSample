@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "UserPortalService.gRPCServer";
+
+package user;
+
+// The greeting service definition.
+service UserGRPC {
+  // Sends a greeting
+  rpc UserList (UserRequestModel) returns (UsersModel);
+ // rpc UserList (UserRequestModel) returns (stream UserListResponseModel);
+}
+
+// The request message containing the user's name.
+message UserRequestModel {
+
+}
+
+message UsersModel {
+    repeated UserModel users = 1;
+}
+
+// The response message containing the greetings.
+message UserModel {
+  int32 id = 1;
+  string name = 2;
+  string lastName = 3;
+}
